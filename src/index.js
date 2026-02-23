@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // ─── Middleware ───────────────────────────────────────────────────────────────
-const allowedOrigins = (process.env.CORS_ORIGINS || 'http://localhost:3000,http://localhost:5173')
+const allowedOrigins = (process.env.CORS_ORIGINS || 'http://localhost:3000,http://localhost:5173,http://localhost:5174,https://appointment-booking-frontend-flax.vercel.app')
     .split(',')
     .map((o) => o.trim());
 
@@ -95,7 +95,8 @@ app.listen(PORT, () => {
     console.log('\n╔══════════════════════════════════════════╗');
     console.log(`║  📅 Appointment Booking API               ║`);
     console.log(`║  🚀 Server running on port ${PORT}           ║`);
-    console.log(`║  🌐 http://localhost:${PORT}                ║`);
+    console.log(`║  🌐 https://appointment-booking-backend-ccgq.onrender.com ║`);
+    // console.log(`║  🌐 http://localhost:${PORT}                ║`);
     console.log(`║  📊 Environment: ${(process.env.NODE_ENV || 'development').padEnd(22)}║`);
     console.log('╚══════════════════════════════════════════╝\n');
 });
