@@ -10,9 +10,17 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // ─── Middleware ───────────────────────────────────────────────────────────────
-const allowedOrigins = (process.env.CORS_ORIGINS || 'http://localhost:3000,http://localhost:5173,http://localhost:5174,https://appointment-booking-frontend-flax.vercel.app')
-    .split(',')
-    .map((o) => o.trim());
+const defaultOrigins = [
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'https://appointment-booking-frontend-flax.vercel.app'
+];
+
+const allowedOrigins = [
+    ...defaultOrigins,
+    ...(process.env.CORS_ORIGINS ? process.env.CORS_ORIGINS.split(',').map(o => o.trim()) : [])
+];
 
 app.use(cors({
     origin: (origin, callback) => {
